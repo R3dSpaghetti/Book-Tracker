@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <div class="container-lg "  >
+        <h1 class="text-center my-3"><%= book.name %></h1>
+        <div class="row g-4" style="width: 80%; margin: 0 auto; padding-bottom: 2.5rem;">
+            <!-- Book Name -->
+            <div class="form-group col-md-12">
+                <label for="bookName" class="form-label required">Book Name </label>
+                <input type="text" class="form-control" id="bookName" disabled value="<%= book.name %>">
+            </div>   
+               <!-- Book ID -->
+            <div class="form-group col-md-12">
+                <label for="bookName" class="form-label required">Book ID </label>
+                <input type="text" class="form-control" id="bookID" disabled value="<%= book.id %>">
+            </div>   
+              <!-- Book Category -->
+            <div class="form-group col-md-12">
+                <label for="bookCategory" class="form-label required">Book Category</label>
+                <select class="form-select" id="bookCategory" name="category" disabled>
+                    <option selected disabled value=""><%= book.category %> </option>
+                    <option value="Romance" <%= book.category === 'Romance' ? 'selected' : '' %>>Romance</option>
+                    <option value="Finance" <%= book.category === 'Finance' ? 'selected' : '' %>>Finance</option>
+                    <option value="Horror" <%= book.category === 'Horror' ? 'selected' : '' %>>Horror</option>
+                    <option value="Motivational" <%= book.category === 'Motivational' ? 'selected' : '' %>>Motivational</option>
+                    <option value="Inspirational" <%= book.category === 'Inspirational' ? 'selected' : '' %>>Inspirational</option>
+                </select>
+            </div>
+            <!-- Book Price -->
+            <div class="col-md-6">
+                <label for="bookPrice" class="form-label required">Book Price</label>
+                <input type="text" class="form-control " id="bookPrice" disabled value="<%= book.price %>">
+                <div class="invalid-feedback">Please provide a valid price.</div>
+            </div>    
+           <!-- Quantity -->
+            <div class="col-md-6">
+                <label for="quantity" class="form-label required">Quantity</label>
+                <input type="number" class="form-control " id="quantity" disabled value="<%= book.quantity %>">
+                <div class="invalid-feedback">Please provide a valid quantity.</div>
+            </div>  
+            
+            <!-- File Upload -->
+            <!-- <div class="input-group">
+                <input type="file" class="form-control" id="bookFile" required>
+                <button class="btn btn-outline-primary" type="button" id="fileUploadButton">Upload</button>
+            </div> -->
+
+            <!-- Book Description -->
+            <div class="col-md-12">
+                <label for="bookDescription" class="form-label">Description of the book</label>
+                <div class="form-floating">
+                    <textarea class="form-control" id="bookDescription"  style="height: 100px;" disabled><%= book.description %></textarea>
+                </div>
+            </div>   
+            <!-- Submit Button -->
+            <div class="col-md-12 text-center">
+                <a href="/<%= book.id %>/edit" class="btn btn-primary btn-lg">Edit</a> 
+                <a href="/" class="btn btn-lg btn-secondary text-white">Back</a> 
+                <!-- <button type="submit" class="btn btn-primary btn-lg" onclick="window.location.href='index';" style="width: 35%; height: 50px;">Submit</button> -->
+            </div>
+        </div>
+    </div>
+    
+    <%- include('partials/footer') %>
+    <script src="/scripts/bootstrap.bundle.min.js"></script>
+</body>
+</html>

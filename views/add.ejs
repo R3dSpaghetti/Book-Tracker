@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <title>Add Book</title>
+    <style>
+        .required::after{
+            content: "*"; 
+            color: red;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <div class="container-lg" >
+        <h1 class="text-center my-3">Add Another Book</h1>
+        <form action="/add-Book" method="post" class="row g-4" style="width: 80%; margin: 0 auto; padding-bottom: 2.5rem;">
+            <div class="form-group col-md-12">
+                <label for="bookName" class="form-label required">Book Name</label>
+                <input type="text" class="form-control" id="bookName" placeholder="Noli Mi Tangere" name="name" required>
+            </div>   
+            <div class="col-md-12">
+                <label for="bookCategory" class="form-label required">Book Category</label>
+                <select class="form-select" id="bookCategory" name="category" required>
+                    <option selected disabled value="">Choose a book genre</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Motivational">Motivational</option>
+                    <option value="Inspirational">Inspirational</option>
+                </select>
+            </div>  
+            <div class="col-md-6">
+                <label for="bookPrice" class="form-label required">Book Price</label>
+                <input type="number" class="form-control" id="bookPrice" placeholder="$0-999999" name="price" required>
+                <div class="invalid-feedback">Please provide a valid price.</div>
+            </div>    
+            <div class="col-md-6">
+                <label for="bookQuantityField" class="form-label">Quantity</label>
+                <input type="number" class="form-control" id="bookQuantityField" placeholder="1-99" min="1" max="99" name="quantity" required>
+                <div class="invalid-feedback">Please provide a valid quantity.</div>
+            </div>    
+            <div class="col-md-12">
+                <label for="bookDescriptionField" class="form-label">Description of the book</label>
+                <div class="form-floating">
+                    <textarea class="form-control" id="bookDescriptionField" placeholder="Briefly introduce your book." style="height: 100px;" name="description"></textarea>
+                    <label for="bookDescriptionField">Description</label>
+                    <div class="invalid-feedback">Please provide a description.</div>
+                </div>
+            </div>   
+            <div class="col-md-12 text-center">
+                <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#deleteModal" id="submitBtn">Submit</button>
+                <a href="/" class="btn btn-lg btn-secondary text-white">Cancel</a> 
+            </div>
+        </form>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Terms and Agreement</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Welcome to the Library! Please confirm to add this book.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <form action="/add-Book" method="post" class="d-inline">
+                        <input type="hidden" name="name" id="modalBookName">
+                        <input type="hidden" name="category" id="modalBookCategory">
+                        <input type="hidden" name="price" id="modalBookPrice">
+                        <input type="hidden" name="quantity" id="modalBookQuantity">
+                        <input type="hidden" name="description" id="modalBookDescription">
+                        <button type="submit" class="btn btn-success">Okay, Create</button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('partials/footer') %>
+
+    <script src="/scripts/addConfirmation.js"></script>
+    <script src="/scripts/bootstrap.bundle.min.js"></script>
+</body>
+</html>

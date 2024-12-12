@@ -1,0 +1,20 @@
+.pagination .page-item.active {
+    background-color: turquoise !important;
+}
+.table td, .table th {
+    max-width: 150px; 
+    word-wrap: break-word;
+    padding: 12px;
+    text-overflow: ellipsis;
+    overflow: hidden;  
+    white-space: nowrap;
+}
+@media (max-width: 768px) {
+    .table td, .table th {
+        font-size: 12px;
+    }
+}
+.table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}   

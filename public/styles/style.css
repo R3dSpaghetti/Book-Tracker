@@ -1,0 +1,23 @@
+footer{
+	background-color: black;
+	margin-top: 100px;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+/*	gap:10px;*/
+
+
+	padding: 10px;
+}
+.fa-globe,.fa-facebook,.fa-x-twitter,.fa-square-instagram,.fa-tiktok,.fa-youtube{
+    font-size:25px;
+    color: whitesmoke;
+    margin-left: 10px;
+    margin-right: 10px;
+    
+}
+.fa-globe:hover,.fa-facebook:hover,.fa-x-twitter:hover,.fa-square-instagram:hover,.fa-tiktok:hover,.fa-youtube:hover{
+	color:greenyellow;
+}
